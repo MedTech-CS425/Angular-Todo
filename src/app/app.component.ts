@@ -7,28 +7,26 @@ import { Todo } from './todo';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Todo'
+  title = 'Todo';
   filter: 'all' | 'active' | 'completed' = 'all';
   Todos: Array<Todo> = [
     {text: 'Eat', completed: false},
     {text: 'Sleep', completed: false},
-    {text: 'Work', completed: false},
-  ]
-  get todos () {
+    {text: 'Work', completed: false}
+  ];
+  get todos(): Array<Todo> {
     if (this.filter === 'all'){
       return this.Todos;
     }
-    return this.Todos.filter(todo => this.filter === 'completed' ? todo.completed : !todo.completed )
+    return this.Todos.filter(todo => this.filter === 'completed' ? todo.completed : !todo.completed );
   }
-  addTodo(text: string){
+  addTodo(text: string): void{
     this.Todos.unshift({
       text,
       completed: false
-    })
+    });
   }
-  remove(todo: Todo){
-    this.Todos.splice(this.Todos.indexOf(todo), 1)
-    console.log(this.Todos);
-    
-  } 
+  remove(todo: Todo): void{
+    this.Todos.splice(this.Todos.indexOf(todo), 1);
+  }
 }

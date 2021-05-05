@@ -3,12 +3,22 @@
   <label>What do you wanna today?</label>
   <input class="lg-text-input" placeholder="Add a Todo" #newTodo (keyup.enter)="addTodo(newTodo.value); newTodo.value = '' ">
   <button class="btn-primary" (click)="addTodo(newTodo.value);  newTodo.value = ''">Add a Todo</button>
+  <div class="btn-wrapper">
+    <button class="btn btn-menu" (click)="filter='all'" [class.active]="filter === 'all'">
+      All
+    </button>
+    <button class="btn btn-menu" (click)="filter='active'" [class.active]="filter === 'active'">
+      Active
+    </button>
+    <button class="btn btn-menu" (click)="filter='completed'" [class.active]="filter === 'completed'">
+       Completed
+    </button>
+  </div>
   <ul>
     <li *ngFor="let todo of todos">
       <app-todo [todo]="todo" (remove)="remove(todo)"></app-todo>
     </li>
   </ul>
-  <app-todo></app-todo>
 </div>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

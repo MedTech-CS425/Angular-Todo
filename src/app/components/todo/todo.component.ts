@@ -9,12 +9,12 @@ import { Todo } from '../../todo';
 export class TodoComponent implements OnInit {
   @Input() todo: Todo;
   @Output() remove = new EventEmitter<Todo>();
-  editable: boolean = false;
+  editable = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-  saveTodo(text: string) {
+  saveTodo(text: string): void {
     this.editable = false;
     this.todo.text = text;
   }
